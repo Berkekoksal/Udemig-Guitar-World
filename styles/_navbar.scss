@@ -1,0 +1,123 @@
+.nav {
+    position: fixed;
+    right: 8rem;
+    top: 8rem;
+    width: auto;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // Checkbox'ı gizleme stili
+    .nav__checkbox {
+        display: none; // Checkbox'ı tamamen gizler
+
+        // Alternatif olarak aşağıdaki kodu kullanarak ekran okuyucular için erişilebilir olmasını sağlayabilirsiniz:
+        /*
+        opacity: 0;
+        position: absolute;
+        left: -9999px;
+        */
+    }
+
+    &:hover .nav__icon {
+        &, &::before, &::after {
+            background-color: $color-white;
+        }
+        &::before {
+            top: -1.2rem;
+        }
+        &::after {
+            top: 1.2rem;
+        }
+    }
+
+    &__icon {
+        position: relative;
+        z-index: 3;
+
+        &, &::before, &::after {
+            width: 4rem;
+            height: 0.5rem;
+            background-color: $color-white-transparent;
+            display: block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+
+        &::before {
+            top: -1rem;
+        }
+
+        &::after {
+            top: 1rem;
+        }
+    }
+
+    &__checkbox-label {
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    &__checkbox:checked + .nav__checkbox-label .nav__icon {
+        background-color: transparent;
+
+        &::before {
+            top: 0;
+            transform: rotate(135deg);
+        }
+
+        &::after {
+            top: 0;
+            transform: rotate(-135deg);
+        }
+    }
+    &__checkbox:checked ~ .nav__background{
+        transform: translateY(0);
+    }
+    &__background{
+        width: 100vw;
+        height: 100vh;
+        background-color: $color-primary;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        transform: translateY(-100vh);
+        transition: all 0.5s;
+    }
+    &__menu{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: $color-white-transparent;
+    }
+    &__menu-list{
+        list-style: none;
+        text-align: center;
+        line-height: 7rem;
+        transform: translateY(200px);
+    }
+    &__menu-link { 
+        text-decoration: none;
+        display: block;
+        min-width: 25rem;
+        cursor: pointer;
+        color: $color-white;
+        border-radius: $button-border-radius;
+        transition: all .5s ease;
+        &:hover{
+            color: $color-primary;
+            background-color: $color-white;
+        }
+    }
+}

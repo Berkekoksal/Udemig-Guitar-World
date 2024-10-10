@@ -1,0 +1,50 @@
+.footer{
+    background-color:$color-primary-light ;
+    border-top:1px solid $color-white-transparent ;
+    padding: 20px;
+    &__list{
+        list-style: none;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem; 
+        
+        //! :(not)(:last-child) sonuncu çocuk dışında hepsine aynı işlemi uygular. 
+     
+            a{
+            position: relative;
+            text-decoration: none;
+            color: $color-white-transparent;
+            margin: 10px;
+            transition: all 0.5s ease;
+            &:hover{
+                transform:scale(1.1);
+                &::after{
+                    width: 100%;
+                    left: 0;
+                    
+                }
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                display: flex;
+                width: 0;
+                height: 3px;
+                background-color: $color-white;
+                left: 50%;
+                bottom: 0;
+                transition: all 0.5s;
+            }
+        }
+    }
+    .copyright{
+        display:flex ;
+        align-items: center;
+        justify-content: center;
+        margin: 25px 10px;
+        font-size: 2rem;
+        color: $color-white-transparent;
+      }
+}
